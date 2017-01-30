@@ -7,23 +7,18 @@ public class DragAndDrop : MonoBehaviour {
 	Vector3 editorMousePosition;
 
 	void OnMouseEnter(){
-		Debug.Log ("Entrando");
 	}
 		
 	void OnMouseExit(){
-		Debug.Log ("Saliendo");
 	}
 
 	void OnMouseDown (){
-		Debug.Log ("Pulsado");
 	}
 
 	void OnMouseUp(){
-		Debug.Log ("Fin Pulsado");
 	}
 
 	void OnMouseDrag (){
-		Debug.Log ("Arrastrando");
 		gameMousePostion = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 0);
 
 		editorMousePosition = Camera.main.ScreenToWorldPoint (gameMousePostion);
@@ -40,6 +35,15 @@ public class DragAndDrop : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+			
+	}
+
+	void OnCollisionEnter2D(Collision2D col) {
+		if (col.gameObject.tag == "Quema") {
+			Destroy (gameObject);
+		}
+		if (col.gameObject.tag == "Ganar") {
+			Destroy (gameObject);
+		}
 	}
 }
